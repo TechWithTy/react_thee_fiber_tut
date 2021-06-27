@@ -12,15 +12,15 @@ import './App.scss';
 
 // soft Shadows
 // softShadows();
-const Box = () => {
+const SpinningMesh = ({pos,args}) => {
   const mesh = useRef(null);
   useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01))
   return (
-    <mesh ref={mesh}>
-      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
-      <meshStandardMaterial attach="material"/>
+    <mesh position={pos} ref={mesh}>
+      <boxBufferGeometry attach="geometry" args={args} />
+      <meshStandardMaterial attach="material" />
     </mesh>
-  )
+  );
 }
 
 
@@ -29,8 +29,11 @@ const App = () => {
     <>
       {/* <Header /> */}
       {/* Our Scene & Camera is already built into our canvas */}
-      <Canvas>
-        <Box/>
+      <Canvas colorManagment camera={{ position: [-5, 2, 10], fov: 60 }}>
+        <ambientLight intensity={0.3} color="pink" />
+        <SpinningMesh pos={[0, 1, 0]} args={[3,2,1]}/>
+        <SpinningMesh pos={[-2, 1, -5]} />
+        <SpinningMesh pos={[5, 1, -2]} />
       </Canvas>
     </>
   );
