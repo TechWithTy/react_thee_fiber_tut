@@ -42,7 +42,7 @@ const App = () => {
     <>
       {/* <Header /> */}
       {/* Our Scene & Camera is already built into our canvas */}
-      <Canvas shadow colorManagment camera={{ position: [-5, 2, 10], fov: 60 }}>
+      <Canvas shadows colorManagment camera={{ position: [-5, 2, 10], fov: 60 }}>
         {/* //Light */}
         <ambientLight intensity={0.3} />
         <pointLight position={[-10, 0, -20]} intensity={0.5} />
